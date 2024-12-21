@@ -52,4 +52,11 @@ public class UserService implements IUserService {
         return userDetails;
     }
 
+    public void checkUserExists(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("User with " + username + " not found");
+        }
+    }
 }
