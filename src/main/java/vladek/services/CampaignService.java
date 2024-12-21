@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vladek.models.Campaign;
 import vladek.services.interfaces.ICampaignService;
-import vladek.services.repositories.CampaignRepository;
+import vladek.repositories.CampaignRepository;
 
 import java.util.ArrayList;
 import java.util.List;
