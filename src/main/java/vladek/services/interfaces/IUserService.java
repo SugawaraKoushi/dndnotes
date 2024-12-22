@@ -1,8 +1,9 @@
 package vladek.services.interfaces;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
-import vladek.dto.UserDTO;
+import vladek.models.User;
 
 public interface IUserService extends UserDetailsService {
-    void save(UserDTO dto);
+    void create(User user);
+    User getCurrentUser();
 }

@@ -3,7 +3,7 @@ package vladek.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import vladek.dto.UserDTO;
+import vladek.dto.SignUpRequest;
 import vladek.models.User;
 import vladek.services.UserService;
 
@@ -20,11 +20,5 @@ public class UserController {
     public ResponseEntity<User> getByUsername(String username) {
         User userFromDb = (User) userService.loadUserByUsername(username);
         return new ResponseEntity<>(userFromDb, HttpStatus.OK);
-    }
-
-    @PostMapping("/save")
-    public ResponseEntity<?> addUser(@RequestBody UserDTO dto) {
-        userService.save(dto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

@@ -2,14 +2,14 @@ package vladek.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import vladek.dto.UserDTO;
+import vladek.dto.SignUpRequest;
 import vladek.models.User;
 import vladek.repositories.UserRepository;
 import vladek.services.interfaces.IUserService;
@@ -25,10 +25,11 @@ public class UserService implements IUserService {
     private final PasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void save(UserDTO dto) {
-        User user = new User();
-        user.setUsername(dto.getUsername());
-        user.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
+    public void create(User user) {
+        if (userRepository.existsByUsername(user.getUsername())) {
+            throw new RuntimeException("Пользователь с таким именем уже существует");
+        }
+
         userRepository.save(user);
     }
 
@@ -50,6 +51,16 @@ public class UserService implements IUserService {
                 );
 
         return userDetails;
+    }
+
+    @Override
+    public User getCurrentUser() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepository.findByUsername(username);
+    }
+
+    public boolean userExists(String username) {
+        return userRepository.existsByUsername(username);
     }
 
     public void checkUserExists(String username) throws UsernameNotFoundException {

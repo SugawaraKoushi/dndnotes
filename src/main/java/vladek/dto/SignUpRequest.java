@@ -3,7 +3,7 @@ package vladek.dto;
 import lombok.Data;
 
 @Data
-public class UserDTO {
+public class SignUpRequest {
     private String username;
     private String password;
 }
