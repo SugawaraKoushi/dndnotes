@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import vladek.dto.SignUpRequest;
 import vladek.models.User;
 import vladek.repositories.UserRepository;
 import vladek.services.interfaces.IUserService;
