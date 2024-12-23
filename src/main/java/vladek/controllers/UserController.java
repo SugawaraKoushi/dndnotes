@@ -22,7 +22,7 @@ public class UserController {
         User user = User.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.ROLE_ADMIN)
+                .role(Role.ROLE_USER)
                 .build();
 
         try {

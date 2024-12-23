@@ -20,7 +20,6 @@ import java.util.Collections;
 public class UserService implements IUserService {
     @Autowired
     private UserRepository userRepository;
-
     private final PasswordEncoder bCryptPasswordEncoder;
 
     @Override
@@ -40,7 +39,7 @@ public class UserService implements IUserService {
             throw new UsernameNotFoundException("User with " + username + " not found");
         }
 
-        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("ROLE_ADMIN");
+        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(user.getRole().name());
 
         org.springframework.security.core.userdetails.User userDetails =
                 new org.springframework.security.core.userdetails.User(
