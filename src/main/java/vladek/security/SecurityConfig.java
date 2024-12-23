@@ -40,9 +40,11 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
+                        .loginPage("http://localhost:3000/login")
                         .loginProcessingUrl("/api/login")
                         .usernameParameter("username")
                         .passwordParameter("password")
+                        .successHandler(new LoginAuthenticationSuccessHandler())
                 );
 
         return http.build();

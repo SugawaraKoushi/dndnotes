@@ -13,7 +13,7 @@ import vladek.models.User;
 import vladek.repositories.UserRepository;
 import vladek.services.interfaces.IUserService;
 
-import java.util.Collections;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -45,7 +45,7 @@ public class UserService implements IUserService {
                 new org.springframework.security.core.userdetails.User(
                         user.getUsername(),
                         user.getPassword(),
-                        Collections.singletonList(grantedAuthority)
+                        List.of(grantedAuthority)
                 );
 
         return userDetails;
