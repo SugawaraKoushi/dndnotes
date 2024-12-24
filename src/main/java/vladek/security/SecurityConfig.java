@@ -18,7 +18,7 @@ import vladek.services.UserService;
 
 import java.util.List;
 
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 @RequiredArgsConstructor
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfig {
@@ -45,6 +45,7 @@ public class SecurityConfig {
                         .usernameParameter("username")
                         .passwordParameter("password")
                         .successHandler(new LoginAuthenticationSuccessHandler())
+                        .failureHandler(new LoginAuthenticationFailureHandler())
                 );
 
         return http.build();

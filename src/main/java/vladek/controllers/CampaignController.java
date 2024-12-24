@@ -11,7 +11,7 @@ import vladek.services.CampaignService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/campaign")
+@RequestMapping("/api/campaigns")
 public class CampaignController {
     private final CampaignService campaignService;
 
