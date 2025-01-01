@@ -37,14 +37,4 @@ public class AuthenticationController {
         securityContextRepository.saveContext(context, request, response);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-    @GetMapping("/is-authenticated")
-    public ResponseEntity<?> isAuthenticated() {
-        SecurityContext context = SecurityContextHolder.getContext();
-        Authentication authentication = context.getAuthentication();
-        System.out.println(authentication.getName());
-        System.out.println(authentication.getPrincipal());
-
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 }
