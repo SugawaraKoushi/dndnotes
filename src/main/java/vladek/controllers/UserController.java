@@ -22,6 +22,8 @@ public class UserController {
         User user = User.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .firstName(request.getFirstName())
+                .firstName(request.getLastName())
                 .role(Role.ROLE_USER)
                 .build();
 
