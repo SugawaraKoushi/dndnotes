@@ -35,4 +35,10 @@ public class UserController {
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @GetMapping("/is-exist")
+    public ResponseEntity<Boolean> isExist(@RequestParam String username) {
+        Boolean isExist = userService.userExists(username);
+        return new ResponseEntity<>(isExist, HttpStatus.OK);
+    }
 }
