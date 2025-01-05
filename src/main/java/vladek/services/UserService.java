@@ -36,7 +36,7 @@ public class UserService implements IUserService {
         User user = userRepository.findByUsername(username);
 
         if (user == null) {
-            throw new UsernameNotFoundException("User with " + username + " not found");
+            throw new UsernameNotFoundException("Пользователь с логином: " + username + " не найден");
         }
 
         GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(user.getRole().name());

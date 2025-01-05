@@ -1,12 +1,9 @@
 package vladek.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vladek.models.Campaign;
 import vladek.services.CampaignService;
 
@@ -14,17 +11,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/campaigns")
+@RequiredArgsConstructor
 public class CampaignController {
     private final CampaignService campaignService;
 
-    public CampaignController(CampaignService campaignService) {
-        this.campaignService = campaignService;
+    @PostMapping("/create")
+    public ResponseEntity<?> create(@RequestBody Campaign campaign) {
+        campaignService.create(campaign);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/get")
     public ResponseEntity<List<Campaign>> getAll() {
 
-        List<Campaign> campaigns =  campaignService.getAll();
+        List<Campaign> campaigns = campaignService.getAll();
         return new ResponseEntity<>(campaigns, HttpStatus.OK);
     }
 }

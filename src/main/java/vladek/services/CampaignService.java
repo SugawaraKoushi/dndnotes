@@ -15,6 +15,11 @@ public class CampaignService implements ICampaignService {
     private CampaignRepository repository;
 
     @Override
+    public void create(Campaign campaign) {
+        repository.save(campaign);
+    }
+
+    @Override
     public List<Campaign> getAll() {
         List<Campaign> campaigns = new ArrayList<>();
         repository.findAll().forEach(campaigns::add);
