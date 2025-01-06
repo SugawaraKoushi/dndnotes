@@ -2,8 +2,8 @@ package vladek.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import vladek.models.Campaign;
+import vladek.models.Character;
 
 @Repository
-public interface CampaignRepository extends CrudRepository<Campaign, Long> {
+public interface CharacterRepository extends CrudRepository<Character, Long> {
 }

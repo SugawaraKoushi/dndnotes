@@ -9,7 +9,7 @@ import lombok.Data;
 public class Campaign {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -19,4 +19,8 @@ public class Campaign {
 
     @Column(length = 5000)
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User author;
 }
