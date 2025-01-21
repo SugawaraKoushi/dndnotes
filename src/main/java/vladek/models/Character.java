@@ -46,8 +46,99 @@ public class Character {
     @Column(nullable = false, columnDefinition = "default '10'")
     private int charisma;
 
+    // Владение спасбросками
+    @Column(name = "strength_mastery", nullable = false, columnDefinition = "default 'false'")
+    private boolean strengthMastery;
+
+    @Column(name = "dexterity_mastery", nullable = false, columnDefinition = "default 'false'")
+    private boolean dexterityMastery;
+
+    @Column(name = "constitution_mastery", nullable = false, columnDefinition = "default 'false'")
+    private boolean constitutionMastery;
+
+    @Column(name = "intelligence_mastery", nullable = false, columnDefinition = "default 'false'")
+    private boolean intelligenceMastery;
+
+    @Column(name = "wisdom_mastery", nullable = false, columnDefinition = "default 'false'")
+    private boolean wisdomMastery;
+
+    @Column(name = "charisma_mastery", nullable = false, columnDefinition = "default 'false'")
+    private boolean charismaMastery;
+
+    // Владение навыками
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency athletic;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency acrobatics;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency sleightOfHand;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency stealth;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency history;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency arcane;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency nature;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency investigation;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency religion;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency perception;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency survival;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency medicine;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency insight;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency animalHandling;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency performance;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency intimidation;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency deception;
+
+    @Column(nullable = false, columnDefinition = "default '0'")
+    @Enumerated(EnumType.ORDINAL)
+    private SkillProficiency persuasion;
+
     // Остальные характеристики
-    @Column(nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private Alignment alignment;
 
@@ -59,6 +150,6 @@ public class Character {
     private String hair;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User author;
 }
