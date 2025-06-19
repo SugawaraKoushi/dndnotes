@@ -5,151 +5,332 @@ import lombok.Data;
 
 @Entity
 @Data
+@Table(name = "characters")
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false, columnDefinition = "default '1'")
-    private int level;
+    private int level = 1;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.ORDINAL)
-    private Sex sex;
+    private String name = "Безымянный персонаж";
 
-    private String className;
+    @Column(nullable = false)
+    private String race = "Человек";
 
-    // Очки здоровья
-    private int healthPoints;
-    private int currentHP;
+    @Column(nullable = false, name = "class_name")
+    private String className = "Воин";
+
+    @Column(nullable = false)
+    private String subclass = "Герой";
+
+    @Column(nullable = false)
+    private int speed = 30;
+
+    @Column(nullable = false, name = "armor_class")
+    private int armorClass = 10;
+
+    @Column(nullable = false, name = "max_hp")
+    private int maxHP = 20;
+
+    @Column(nullable = false, name = "current_hp")
+    private int currentHP = 20;
+
+    @Column(nullable = false, name = "temporary_hp")
     private int temporaryHP;
 
-    // Основные характеристики
-    @Column(nullable = false, columnDefinition = "default '10'")
-    private int strength;
+    @Column(nullable = false)
+    private int strength = 10;
 
-    @Column(nullable = false, columnDefinition = "default '10'")
-    private int dexterity;
+    @Column(nullable = false)
+    private int dexterity = 10;
 
-    @Column(nullable = false, columnDefinition = "default '10'")
-    private int constitution;
+    @Column(nullable = false)
+    private int constitution = 10;
 
-    @Column(nullable = false, columnDefinition = "default '10'")
-    private int intelligence;
+    @Column(nullable = false)
+    private int wisdom = 10;
 
-    @Column(nullable = false, columnDefinition = "default '10'")
-    private int wisdom;
+    @Column(nullable = false)
+    private int charisma = 10;
 
-    @Column(nullable = false, columnDefinition = "default '10'")
-    private int charisma;
+    @Column(nullable = false)
+    private int initiative = 10;
+
+    @Column(nullable = false)
+    private boolean inspiration;
+
+    @Column(nullable = false, name = "proficiency_bonus")
+    private int proficiencyBonus = 2;
+
+    // Спасброски
+    @Column(nullable = false, name = "strength_saving_throw")
+    private int strengthSavingThrow;
+
+    @Column(nullable = false, name = "dexterity_saving_throw")
+    private int dexteritySavingThrow;
+
+    @Column(nullable = false, name = "constitution_saving_throw")
+    private int constitutionSavingThrow;
+
+    @Column(nullable = false, name = "intelligence_saving_throw")
+    private int intelligenceSavingThrow;
+
+    @Column(nullable = false, name = "wisdom_saving_throw")
+    private int wisdomSavingThrow;
+
+    @Column(nullable = false, name = "charisma_saving_throw")
+    private int charismaSavingThrow;
 
     // Владение спасбросками
-    @Column(name = "strength_mastery", nullable = false, columnDefinition = "default 'false'")
-    private boolean strengthMastery;
+    @Column(nullable = false, name = "strength_saving_throw_proficiency")
+    private boolean strengthSavingThrowProficiency;
 
-    @Column(name = "dexterity_mastery", nullable = false, columnDefinition = "default 'false'")
-    private boolean dexterityMastery;
+    @Column(nullable = false, name = "dexterity_saving_throw_proficiency")
+    private boolean dexteritySavingThrowProficiency;
 
-    @Column(name = "constitution_mastery", nullable = false, columnDefinition = "default 'false'")
-    private boolean constitutionMastery;
+    @Column(nullable = false, name = "constitution_saving_throw_proficiency")
+    private boolean constitutionSavingThrowProficiency;
 
-    @Column(name = "intelligence_mastery", nullable = false, columnDefinition = "default 'false'")
-    private boolean intelligenceMastery;
+    @Column(nullable = false, name = "intelligence_saving_throw_proficiency")
+    private boolean intelligenceSavingThrowProficiency;
 
-    @Column(name = "wisdom_mastery", nullable = false, columnDefinition = "default 'false'")
-    private boolean wisdomMastery;
+    @Column(nullable = false, name = "wisdom_saving_throw_proficiency")
+    private boolean wisdomSavingThrowProficiency;
 
-    @Column(name = "charisma_mastery", nullable = false, columnDefinition = "default 'false'")
-    private boolean charismaMastery;
+    @Column(nullable = false, name = "charisma_saving_throw_proficiency")
+    private boolean charismaSavingThrowProficiency;
+
+    // Навыки
+    @Column(nullable = false)
+    private int athletics; // Атлетика
+
+    @Column(nullable = false)
+    private int acrobatics; // Акробатика
+
+    @Column(nullable = false, name = "sleight_of_hand")
+    private int sleightOfHand; // Ловкость рук
+
+    @Column(nullable = false)
+    private int stealth; // Скрытность
+
+    @Column(nullable = false)
+    private int arcana; // Магия
+
+    @Column(nullable = false)
+    private int history; // История
+
+    @Column(nullable = false)
+    private int investigation; // Анализ
+
+    @Column(nullable = false)
+    private int nature; // Природа
+
+    @Column(nullable = false)
+    private int religion; // Религия
+
+    @Column(nullable = false, name = "animal_handling")
+    private int animalHandling; // Уход за животными
+
+    @Column(nullable = false)
+    private int insight; // Проницательность
+
+    @Column(nullable = false)
+    private int medicine; // Медицина
+
+    @Column(nullable = false)
+    private int perception; // Восприятие
+
+    @Column(nullable = false)
+    private int survival; // Выживание
+
+    @Column(nullable = false)
+    private int deception; // Обман
+
+    @Column(nullable = false)
+    private int intimidation; // Запугивание
+
+    @Column(nullable = false)
+    private int performance; // Выступление
+
+    @Column(nullable = false)
+    private int persuasion; // Убеждение
 
     // Владение навыками
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency athletic;
+    @Column(nullable = false, name = "athletics_proficiency")
+    private boolean athleticsProficiency; // Атлетика
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency acrobatics;
+    @Column(nullable = false, name = "acrobatics_proficiency")
+    private boolean acrobaticsProficiency; // Акробатика
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency sleightOfHand;
+    @Column(nullable = false, name = "sleight_of_hand_proficiency")
+    private boolean sleightOfHandProficiency;  // Ловкость рук
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency stealth;
+    @Column(nullable = false, name = "stealth_proficiency")
+    private boolean stealthProficiency; // Скрытность
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency history;
+    @Column(nullable = false, name = "arcana_proficiency")
+    private boolean arcanaProficiency; // Магия
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency arcane;
+    @Column(nullable = false, name = "history_proficiency")
+    private boolean historyProficiency; // История
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency nature;
+    @Column(nullable = false, name = "investigation_proficiency")
+    private boolean investigationProficiency; // Анализ
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency investigation;
+    @Column(nullable = false, name = "nature_proficiency")
+    private boolean natureProficiency; // Природа
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency religion;
+    @Column(nullable = false, name = "religion_proficiency")
+    private boolean religionProficiency; // Религия
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency perception;
+    @Column(nullable = false, name = "animal_handling_proficiency")
+    private boolean animalHandlingProficiency;  // Уход за животными
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency survival;
+    @Column(nullable = false, name = "insight_proficiency")
+    private boolean insightProficiency; // Проницательность
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency medicine;
+    @Column(nullable = false, name = "medicine_proficiency")
+    private boolean medicineProficiency; // Медицина
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency insight;
+    @Column(nullable = false, name = "perception_proficiency")
+    private boolean perceptionProficiency; // Внимательность
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency animalHandling;
+    @Column(nullable = false, name = "survival_proficiency")
+    private boolean survivalProficiency; // Выживание
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency performance;
+    @Column(nullable = false, name = "deception_proficiency")
+    private boolean deceptionProficiency; // Обман
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency intimidation;
+    @Column(nullable = false, name = "intimidation_proficiency")
+    private boolean intimidationProficiency; // Запугивание
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency deception;
+    @Column(nullable = false, name = "performance_proficiency")
+    private boolean performanceProficiency; // Выступление
 
-    @Column(nullable = false, columnDefinition = "default '0'")
-    @Enumerated(EnumType.ORDINAL)
-    private SkillProficiency persuasion;
+    @Column(nullable = false, name = "persuasion_proficiency")
+    private boolean persuasionProficiency; // Убеждение
 
-    // Остальные характеристики
-    @Enumerated(EnumType.ORDINAL)
-    private Alignment alignment;
+    // Бонусы к навыкам
+    @Column(nullable = false, name = "athletic_bonus")
+    private int athleticsBonus; // Атлетика
 
-    private int height;
-    private int weight;
-    private int age;
-    private String eyes;
-    private String skin;
-    private String hair;
+    @Column(nullable = false, name = "acrobatics_bonus")
+    private int acrobaticsBonus; // Акробатика
+
+    @Column(nullable = false, name = "sleight_of_hand_bonus")
+    private int sleightOfHandBonus; // Ловкость рук
+
+    @Column(nullable = false, name = "stealth_bonus")
+    private int stealthBonus; // Скрытность
+
+    @Column(nullable = false, name = "arcana_bonus")
+    private int arcanaBonus; // Магия
+
+    @Column(nullable = false, name = "history_bonus")
+    private int historyBonus; // История
+
+    @Column(nullable = false, name = "investigation_bonus")
+    private int investigationBonus; // Анализ
+
+    @Column(nullable = false, name = "nature_bonus")
+    private int natureBonus; // Природа
+
+    @Column(nullable = false, name = "religion_bonus")
+    private int religionBonus; // Религия
+
+    @Column(nullable = false, name = "animal_handling_bonus")
+    private int animalHandlingBonus; // Уход за животными
+
+    @Column(nullable = false, name = "insight_bonus")
+    private int insightBonus; // Проницательность
+
+    @Column(nullable = false, name = "medicine_bonus")
+    private int medicineBonus; // Медицина
+
+    @Column(nullable = false, name = "perception_bonus")
+    private int perceptionBonus; // Восприятие
+
+    @Column(nullable = false, name = "survival_bonus")
+    private int survivalBonus; // Выживание
+
+    @Column(nullable = false, name = "deception_bonus")
+    private int deceptionBonus; // Обман
+
+    @Column(nullable = false, name = "intimidation_bonus")
+    private int intimidationBonus; // Запугивание
+
+    @Column(nullable = false, name = "performance_bonus")
+    private int performanceBonus; // Выступление
+
+    @Column(nullable = false, name = "persuasion_bonus")
+    private int persuasionBonus; // Убеждение
+
+    // Пассивные чувства
+    @Column(nullable = false, name = "perception_passive")
+    private int perceptionPassive = 10;
+
+    @Column(nullable = false, name = "insight_passive")
+    private int insightPassive = 10;
+
+    @Column(nullable = false, name = "investigation_passive")
+    private int investigationPassive = 10;
+
+    // Состояния
+    @Column(nullable = false)
+    private int exhausted; // Истощение
+
+    @Column(nullable = false)
+    private boolean unconscious; // Бессознательный
+
+    @Column(nullable = false)
+    private boolean frightened; // Испуганный
+
+    @Column(nullable = false)
+    private boolean exhaustion; // Истощенный
+
+    @Column(nullable = false)
+    private boolean invisible; // Невидимый
+
+    @Column(nullable = false)
+    private boolean incapacitated; // Недееспособный
+
+    @Column(nullable = false)
+    private boolean deafened; // Оглохший
+
+    @Column(nullable = false)
+    private boolean petrified; // Окаменевший
+
+    @Column(nullable = false)
+    private boolean restrained; // Опутанный
+
+    @Column(nullable = false)
+    private boolean blinded; // Ослеплённый
+
+    @Column(nullable = false)
+    private boolean poisoned; // Отравленный
+
+    @Column(nullable = false)
+    private boolean charmed; // Очарованный
+
+    @Column(nullable = false)
+    private boolean stunned; // Ошеломлённый
+
+    @Column(nullable = false)
+    private boolean paralyzed; // Парализованный
+
+    @Column(nullable = false)
+    private boolean prone; // Сбитый с ног
+
+    @Column(nullable = false)
+    private boolean grappled; // Схваченный
+
+    @Column(name = "notes")
+    private String note;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User author;
+    private User user;
 }

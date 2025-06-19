@@ -18,9 +18,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserService implements IUserService {
-    @Autowired
-    private UserRepository userRepository;
-    private final PasswordEncoder bCryptPasswordEncoder;
+    private final UserRepository userRepository;
 
     @Override
     public void create(User user) {

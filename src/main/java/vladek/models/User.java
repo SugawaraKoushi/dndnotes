@@ -33,10 +33,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "author")
-    private List<Campaign> authoredCampaigns;
-
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "user")
     private List<Character> characters;
 
     @Override

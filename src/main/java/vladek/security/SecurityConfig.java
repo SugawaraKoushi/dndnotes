@@ -14,11 +14,10 @@ import org.springframework.security.web.authentication.logout.HttpStatusReturnin
 import org.springframework.web.cors.CorsConfigurationSource;
 
 @EnableWebSecurity
-@RequiredArgsConstructor
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
-    @Autowired
-    private CorsConfigurationSource corsConfigurationSource;
+    private final CorsConfigurationSource corsConfigurationSource;
 
     @Bean
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {

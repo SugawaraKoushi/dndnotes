@@ -1,6 +1,7 @@
 package vladek.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -8,13 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import vladek.dto.SignUpRequest;
 import vladek.models.Role;
 import vladek.models.User;
-import vladek.services.UserService;
+import vladek.services.interfaces.IUserService;
 
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {
-    private final UserService userService;
+    private final IUserService userService;
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/create")
@@ -40,5 +41,16 @@ public class UserController {
     public ResponseEntity<Boolean> isExist(@RequestParam String username) {
         Boolean isExist = userService.userExists(username);
         return new ResponseEntity<>(isExist, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<User> getCurrentUser() {
+        User user = userService.getCurrentUser();
+
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
