@@ -1,7 +1,7 @@
 package vladek.controllers;
 
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,6 +14,7 @@ import vladek.services.interfaces.IUserService;
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
+@Builder
 public class UserController {
     private final IUserService userService;
     private final PasswordEncoder passwordEncoder;
@@ -43,14 +44,14 @@ public class UserController {
         return new ResponseEntity<>(isExist, HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<User> getCurrentUser() {
-        User user = userService.getCurrentUser();
-
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
-
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<User> getCurrentUser() {
+//        User user = userService.getCurrentUser();
+//
+//        if (user == null) {
+//            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//        }
+//
+//        return new ResponseEntity<>(user, HttpStatus.OK);
+//    }
 }

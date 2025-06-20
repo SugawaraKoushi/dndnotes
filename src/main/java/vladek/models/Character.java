@@ -2,10 +2,14 @@ package vladek.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
+
+import java.util.List;
 
 @Entity
 @Data
 @Table(name = "characters")
+@ToString(exclude = {"user", "attacks"})
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -49,6 +53,9 @@ public class Character {
 
     @Column(nullable = false)
     private int constitution = 10;
+
+    @Column(nullable = false)
+    private int intelligence;
 
     @Column(nullable = false)
     private int wisdom = 10;
@@ -330,7 +337,10 @@ public class Character {
     @Column(name = "notes")
     private String note;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(mappedBy = "character")
+    private List<Attack> attacks;
 }
