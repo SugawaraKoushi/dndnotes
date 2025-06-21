@@ -1,6 +1,5 @@
 package vladek.services.interfaces;
 
-import vladek.dto.CharacterShortDTO;
 import vladek.models.Character;
 import vladek.models.User;
 
@@ -16,6 +15,4 @@ public interface ICharacterService {
     void deleteCharacterById(Long characterId);
 
     Character updateCharacter(Character character);
-
-    CharacterShortDTO toCharacterListItemDTO(Character character);
 }

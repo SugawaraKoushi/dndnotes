@@ -1,8 +1,6 @@
 package vladek.dto;
 
 import lombok.Data;
-import vladek.models.Ability;
-import vladek.models.Character;
 
 @Data
 public class AttackDTO {
@@ -10,9 +8,9 @@ public class AttackDTO {
     private String name;
     private boolean proficiency;
     private int proficiencyBonus;
-    private Ability ability;
+    private int ability;
     private int abilityBonus;
     private String damage;
     private int additionalBonus;
-    private Character character;
+    private Long characterId;
 }

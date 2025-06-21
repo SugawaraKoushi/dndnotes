@@ -12,7 +12,7 @@ public class Attack {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String name = "Настроить";
 
     @Column(nullable = false)
     private boolean proficiency;

@@ -2,7 +2,6 @@ package vladek.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import vladek.dto.CharacterShortDTO;
 import vladek.models.Character;
 import vladek.models.User;
 import vladek.repositories.CharacterRepository;
@@ -40,16 +39,5 @@ public class CharacterService implements ICharacterService {
     @Override
     public Character updateCharacter(Character character) {
         return repository.save(character);
-    }
-
-    @Override
-    public CharacterShortDTO toCharacterListItemDTO(Character character) {
-        CharacterShortDTO dto = new CharacterShortDTO();
-        dto.setId(character.getId());
-        dto.setName(character.getName());
-        dto.setClassName(character.getClassName());
-        dto.setCurrentHP(character.getCurrentHP());
-        dto.setMaxHP(character.getMaxHP());
-        return dto;
     }
 }
