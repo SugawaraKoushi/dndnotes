@@ -124,5 +124,6 @@ public class CharacterDTO {
     private boolean paralyzed; // Парализованный
     private boolean prone; // Сбитый с ног
     private boolean grappled; // Схваченный
-    private String note;
+    private String languages;
+    private String notes;
 }

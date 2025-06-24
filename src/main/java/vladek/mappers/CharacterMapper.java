@@ -15,6 +15,4 @@ public interface CharacterMapper {
     CharacterDTO toDTO(Character character);
 
     List<CharacterShortDTO> toShortDTOList(List<Character> characters);
-
-    List<CharacterDTO> toDTOList(List<Character> characters);
 }

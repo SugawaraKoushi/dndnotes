@@ -335,12 +335,15 @@ public class Character {
     private boolean grappled; // Схваченный
 
     @Column(name = "notes")
-    private String note;
+    private String notes;
+
+    @Column(name = "languages")
+    private String languages;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "character")
+    @OneToMany(mappedBy = "character", cascade = CascadeType.REMOVE)
     private List<Attack> attacks;
 }
