@@ -1,12 +1,8 @@
-version: '3.8'
-
 services:
   app:
     build: .
     ports:
       - "9090:8080"
-    depends_on:
-      - db
     environment:
       SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
       SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
