@@ -13,13 +13,14 @@ public class CharacterDTO {
     private int level;
     private String name;
     private String race;
-    private String className ;
+    private String className;
     private String subclass;
     private int speed;
     private int armorClass;
     private int maxHP;
     private int currentHP;
     private int temporaryHP;
+
     // характеристики
     private int strength;
     private int dexterity;
@@ -27,11 +28,10 @@ public class CharacterDTO {
     private int intelligence;
     private int wisdom;
     private int charisma;
-    
-    
     private int initiative;
     private boolean inspiration;
     private int proficiencyBonus;
+
     // Спасброски
     private int strengthSavingThrow;
     private int dexteritySavingThrow;
@@ -39,6 +39,15 @@ public class CharacterDTO {
     private int intelligenceSavingThrow;
     private int wisdomSavingThrow;
     private int charismaSavingThrow;
+
+    // бонусы к спасброскам
+    private int strengthSavingThrowBonus;
+    private int dexteritySavingThrowBonus;
+    private int constitutionSavingThrowBonus;
+    private int intelligenceSavingThrowBonus;
+    private int wisdomSavingThrowBonus;
+    private int charismaSavingThrowBonus;
+
     // Владение спасбросками
     private boolean strengthSavingThrowProficiency;
     private boolean dexteritySavingThrowProficiency;
@@ -46,6 +55,7 @@ public class CharacterDTO {
     private boolean intelligenceSavingThrowProficiency;
     private boolean wisdomSavingThrowProficiency;
     private boolean charismaSavingThrowProficiency;
+
     // Навыки
     private int athletics; // Атлетика
     private int acrobatics; // Акробатика
@@ -65,6 +75,7 @@ public class CharacterDTO {
     private int intimidation; // Запугивание
     private int performance; // Выступление
     private int persuasion; // Убеждение
+
     // Владение навыками
     private boolean athleticsProficiency; // Атлетика
     private boolean acrobaticsProficiency; // Акробатика
@@ -84,6 +95,7 @@ public class CharacterDTO {
     private boolean intimidationProficiency; // Запугивание
     private boolean performanceProficiency; // Выступление
     private boolean persuasionProficiency; // Убеждение
+
     // Бонусы к навыкам
     private int athleticsBonus; // Атлетика
     private int acrobaticsBonus; // Акробатика
@@ -103,10 +115,12 @@ public class CharacterDTO {
     private int intimidationBonus; // Запугивание
     private int performanceBonus; // Выступление
     private int persuasionBonus; // Убеждение
+
     // Пассивные чувства
     private int perceptionPassive;
     private int insightPassive;
     private int investigationPassive;
+    
     // Состояния
     private int exhausted; // Истощение
     private boolean unconscious; // Бессознательный
@@ -124,6 +138,8 @@ public class CharacterDTO {
     private boolean paralyzed; // Парализованный
     private boolean prone; // Сбитый с ног
     private boolean grappled; // Схваченный
+    private Long userId;
     private String languages;
     private String notes;
+    private String avatarLink;
 }

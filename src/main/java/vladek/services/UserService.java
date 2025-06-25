@@ -36,7 +36,6 @@ public class UserService implements IUserService {
         }
 
         GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(user.getRole().name());
-
         org.springframework.security.core.userdetails.User userDetails =
                 new org.springframework.security.core.userdetails.User(
                         user.getUsername(),
@@ -51,6 +50,11 @@ public class UserService implements IUserService {
     public User getCurrentUser() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
 
     public boolean userExists(String username) {

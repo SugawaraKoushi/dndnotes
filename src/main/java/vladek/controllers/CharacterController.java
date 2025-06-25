@@ -62,7 +62,10 @@ public class CharacterController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<CharacterDTO> updateCharacter(@RequestBody Character character) {
+    public ResponseEntity<CharacterDTO> updateCharacter(@RequestBody CharacterDTO characterDTO) {
+        User user = userService.getUserById(characterDTO.getUserId());
+        Character character = characterMapper.toEntity(characterDTO);
+        character.setUser(user);
         Character updatedCharacter = characterService.updateCharacter(character);
         CharacterDTO dto = characterMapper.toDTO(updatedCharacter);
         return new ResponseEntity<>(dto, HttpStatus.OK);

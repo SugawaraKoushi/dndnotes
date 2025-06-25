@@ -9,4 +9,5 @@ public class CharacterShortDTO {
     private String className;
     private int currentHP;
     private int maxHP;
+    private String avatarLink;
 }

@@ -55,7 +55,7 @@ public class Character {
     private int constitution = 10;
 
     @Column(nullable = false)
-    private int intelligence;
+    private int intelligence = 10;
 
     @Column(nullable = false)
     private int wisdom = 10;
@@ -64,7 +64,7 @@ public class Character {
     private int charisma = 10;
 
     @Column(nullable = false)
-    private int initiative = 10;
+    private int initiative;
 
     @Column(nullable = false)
     private boolean inspiration;
@@ -90,6 +90,24 @@ public class Character {
 
     @Column(nullable = false, name = "charisma_saving_throw")
     private int charismaSavingThrow;
+
+    @Column(nullable = false, name = "strength_saving_throw_bonus")
+    private int strengthSavingThrowBonus;
+
+    @Column(nullable = false, name = "dexterity_saving_throw_bonus")
+    private int dexteritySavingThrowBonus;
+
+    @Column(nullable = false, name = "constitution_saving_throw_bonus")
+    private int constitutionSavingThrowBonus;
+
+    @Column(nullable = false, name = "intelligence_saving_throw_bonus")
+    private int intelligenceSavingThrowBonus;
+
+    @Column(nullable = false, name = "wisdom_saving_throw_bonus")
+    private int wisdomSavingThrowBonus;
+
+    @Column(nullable = false, name = "charisma_saving_throw_bonus")
+    private int charismaSavingThrowBonus;
 
     // Владение спасбросками
     @Column(nullable = false, name = "strength_saving_throw_proficiency")
@@ -346,4 +364,7 @@ public class Character {
 
     @OneToMany(mappedBy = "character", cascade = CascadeType.REMOVE)
     private List<Attack> attacks;
+
+    @Column(name = "avatar_link")
+    private String avatarLink;
 }

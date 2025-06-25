@@ -9,4 +9,6 @@ public interface IUserService extends UserDetailsService {
     boolean userExists(String username);
 
     User getCurrentUser();
+
+    User getUserById(Long id);
 }

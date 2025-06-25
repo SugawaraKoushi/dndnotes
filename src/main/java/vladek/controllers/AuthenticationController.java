@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import vladek.dto.SignInRequest;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
