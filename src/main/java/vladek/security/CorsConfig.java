@@ -12,7 +12,7 @@ public class CorsConfig {
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of(System.getenv("CORS_ALLOWED_ORIGINS"), "http://localhost:3000", "http://127.0.0.1:3000"));
+        configuration.setAllowedOrigins(List.of(System.getenv("CORS_ALLOWED_ORIGIN"), "http://localhost:3000", "http://127.0.0.1:3000"));
         configuration.setAllowedMethods(List.of("*"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
