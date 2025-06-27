@@ -3,18 +3,16 @@ services:
     container_name: dndnotes-backend
     build: .
     ports:
-      - "9090:8080"
+      - "8080"
     restart: unless-stopped
     networks:
       - dndnotes-network
-#    environment:
-#      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
-#      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
-#      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
-#      SPRING_JPA_HIBERNATE_DDL-AUTO: update
-#      CORS_ALLOWED_ORIGIN: ${CORS_ALLOWED_ORIGIN}
-    env_file:
-      - stack.env
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL-AUTO: update
+      CORS_ALLOWED_ORIGIN: ${CORS_ALLOWED_ORIGIN}
 
 networks:
   dndnotes-network:
