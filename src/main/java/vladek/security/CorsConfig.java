@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -12,7 +13,10 @@ public class CorsConfig {
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of(System.getenv("CORS_ALLOWED_ORIGIN"), "http://localhost:3000", "http://127.0.0.1:3000"));
+        List<String> corsAllowedOrigins = Arrays.asList(System.getenv("CORS_ALLOWED_ORIGINS").split(","));
+        corsAllowedOrigins.add("http://localhost:3000");
+        corsAllowedOrigins.add("http://127.0.0.1:3000");
+        configuration.setAllowedOrigins(corsAllowedOrigins);
         configuration.setAllowedMethods(List.of("*"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
