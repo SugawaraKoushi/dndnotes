@@ -16,7 +16,7 @@ public class CorsConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         String corsOriginsEnv = System.getenv("CORS_ALLOWED_ORIGINS");
         List<String> corsAllowedOrigins = corsOriginsEnv != null
-                ? Arrays.asList(corsOriginsEnv.split(","))
+                ? new ArrayList<>(List.of(corsOriginsEnv.split(",")))
                 : new ArrayList<>();
         corsAllowedOrigins.add("http://localhost:3000");
         corsAllowedOrigins.add("http://127.0.0.1:3000");
