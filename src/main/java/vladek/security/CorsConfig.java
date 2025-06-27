@@ -20,7 +20,6 @@ public class CorsConfig {
                 : new ArrayList<>();
         corsAllowedOrigins.add("http://localhost:3000");
         corsAllowedOrigins.add("http://127.0.0.1:3000");
-        corsAllowedOrigins.forEach(System.out::println);
         configuration.setAllowedOrigins(corsAllowedOrigins);
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
