@@ -31,10 +31,15 @@ public class SecurityConfig {
                         .requireExplicitSave(true)
                 )
                 .logout(logout -> logout
+                        .logoutUrl("/api/auth/logout")
                         .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.NO_CONTENT))
                         .deleteCookies("JSESSIONID")
                         .clearAuthentication(true)
                         .invalidateHttpSession(true)
+                        .addLogoutHandler(((request, response, authentication) -> {
+                            String jSessionIdCookie = "JSESSIONID=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/";
+                            response.setHeader("Set-Cookie", jSessionIdCookie);
+                        }))
                 )
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
