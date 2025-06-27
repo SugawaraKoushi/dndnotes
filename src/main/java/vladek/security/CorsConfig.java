@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,12 +14,17 @@ public class CorsConfig {
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        List<String> corsAllowedOrigins = Arrays.asList(System.getenv("CORS_ALLOWED_ORIGINS").split(","));
+        String corsOriginsEnv = System.getenv("CORS_ALLOWED_ORIGINS");
+        List<String> corsAllowedOrigins = corsOriginsEnv != null
+                ? Arrays.asList(corsOriginsEnv.split(","))
+                : new ArrayList<>();
         corsAllowedOrigins.add("http://localhost:3000");
         corsAllowedOrigins.add("http://127.0.0.1:3000");
+        corsAllowedOrigins.forEach(System.out::println);
         configuration.setAllowedOrigins(corsAllowedOrigins);
-        configuration.setAllowedMethods(List.of("*"));
-        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setExposedHeaders(List.of("Set-Cookie"));
         configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
