@@ -13,6 +13,7 @@ import vladek.services.interfaces.ICharacterService;
 import vladek.services.interfaces.IUserService;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/characters")
@@ -38,6 +39,18 @@ public class CharacterController {
     @GetMapping("/{characterId}")
     public ResponseEntity<CharacterDTO> getCharacterById(@PathVariable Long characterId) {
         Character character = characterService.getCharacterById(characterId);
+
+        if (character == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        User characterUser = userService.getUserById(character.getUser().getId());
+        User currentUser = userService.getCurrentUser();
+
+        if (!Objects.equals(characterUser.getId(), currentUser.getId())) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
         CharacterDTO dto = characterMapper.toDTO(character);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
