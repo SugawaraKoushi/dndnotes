@@ -17,6 +17,9 @@ public class Attack {
     @Column(nullable = false)
     private boolean proficiency;
 
+    @Column(nullable = false)
+    private int proficiencyBonus;
+
     @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private Ability ability = Ability.EMPTY;

@@ -7,6 +7,7 @@ public class AttackDTO {
     private Long id;
     private String name;
     private boolean proficiency;
+    private int proficiencyBonus;
     private int ability;
     private int abilityBonus;
     private String damage;
